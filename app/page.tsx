@@ -7,7 +7,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 py-8">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">Brain MRI Scan Analysis</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">Brain tumor detector</h1>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Upload a brain MRI scan to analyze and detect potential conditions including Glioma, Meningioma, and
             Pituitary tumors.
