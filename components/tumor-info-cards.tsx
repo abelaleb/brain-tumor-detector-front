@@ -82,8 +82,8 @@ export default function TumorInfoCards({ activeTumor }: TumorInfoCardsProps) {
             <CardContent>
               <div className="space-y-4">
                 <p>
-                  A "No Tumor" result indicates that no evidence of a brain tumor was detected in the MRI scan. This is
-                  a positive finding, though it's important to note that this analysis should be confirmed by a medical
+                  A &quot;No Tumor&quot; result indicates that no evidence of a brain tumor was detected in the MRI scan. This is
+                  a positive finding, though it&apos;s important to note that this analysis should be confirmed by a medical
                   professional.
                 </p>
                 <div>

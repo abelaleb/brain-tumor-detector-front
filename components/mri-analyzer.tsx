@@ -6,7 +6,6 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { analyzeMriImage } from "@/lib/analyze-mri";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -120,7 +119,8 @@ export default function MriAnalyzer() {
 
       setResult(formattedResult);
       setActiveTab("original");
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       toast({
         title: "Analysis failed",
         description:
