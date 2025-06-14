@@ -11,7 +11,6 @@ export default function TumorInfoCards({ activeTumor }: TumorInfoCardsProps) {
   return (
     <div className="mt-8">
       <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Tumor Information</h2>
-
       <Tabs defaultValue={activeTumor.toLowerCase().replace(" ", "-")}>
         <TabsList className="mb-4">
           <TabsTrigger value="glioma">Glioma</TabsTrigger>
