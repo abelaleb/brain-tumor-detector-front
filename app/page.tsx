@@ -12,7 +12,7 @@ import { DiseaseInfo } from "@/components/DiseaseInfo";
 import { MedicalDisclaimer } from "@/components/MedicalDisclaimer";
 
 type ModelType = "brain-tumor" | "stroke" | "parkinson" | "hemorrhagic";
-interface AnalysisResult {
+export interface AnalysisResult {
   prediction: string;
   confidence: number;
   timestamp: Date;
@@ -47,20 +47,33 @@ export default function Home() {
 
     setIsAnalyzing(true);
 
-    // Simulate AI analysis
-    setTimeout(() => {
-      const modelClasses = models[selectedModel].classes;
-      const randomClass =
-        modelClasses[Math.floor(Math.random() * modelClasses.length)];
-      const confidence = Math.floor(Math.random() * 30) + 70; // 70-100% confidence
+    try {
+      const formData = new FormData();
+      const blob = await fetch(uploadedImage).then((res) => res.blob());
+      formData.append("file", blob, "image.jpg");
 
+      const response = await fetch(
+        `http://localhost:8000/predict/${selectedModel}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) throw new Error("Analysis failed");
+
+      const data = await response.json();
       setAnalysisResult({
-        prediction: randomClass,
-        confidence,
+        prediction: data.prediction,
+        confidence: data.confidence,
         timestamp: new Date(),
       });
+    } catch (err) {
+      console.error(err);
+      alert("Image analysis failed. Please try again.");
+    } finally {
       setIsAnalyzing(false);
-    }, 3000);
+    }
   };
 
   const handleFeedback = (isCorrect: boolean) => {
@@ -97,9 +110,12 @@ export default function Home() {
           <ImageUploader
             modelName={currentModel.name}
             uploadedImage={uploadedImage}
+            setUploadedImage = {setUploadedImage}
             isAnalyzing={isAnalyzing}
             onImageUpload={handleImageUpload}
             onAnalyze={handleAnalyze}
+            setAnalysisResult={setAnalysisResult}
+            setFeedback={setFeedback}
           />
           <AnalysisResults
             isAnalyzing={isAnalyzing}
