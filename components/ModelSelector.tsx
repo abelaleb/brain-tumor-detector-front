@@ -1,7 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { models, ModelType } from "@/lib/data";
-import { useState } from "react";
 
 interface ModelSelectorProps {
   selectedModel: ModelType;
