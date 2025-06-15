@@ -162,7 +162,7 @@ export function AnalysisResults({
                         Upload Medical Image
                       </h4>
                       <p className="text-sm text-gray-400">
-                        Upload a clear medical scan (MRI, CT, X-ray, etc.)
+                        Upload a clear medical scan (MRI scan.)
                       </p>
                     </div>
                   </div>
