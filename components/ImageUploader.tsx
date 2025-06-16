@@ -16,8 +16,12 @@ interface ImageUploaderProps {
   modelName: string;
   uploadedImage: string | null;
   setUploadedImage: React.Dispatch<React.SetStateAction<string | null>>;
-  setAnalysisResult: React.Dispatch<React.SetStateAction<AnalysisResult | null>>;
-  setFeedback: React.Dispatch<React.SetStateAction<"correct" | "incorrect" | null>>;
+  setAnalysisResult: React.Dispatch<
+    React.SetStateAction<AnalysisResult | null>
+  >;
+  setFeedback: React.Dispatch<
+    React.SetStateAction<"correct" | "incorrect" | null>
+  >;
   isAnalyzing: boolean;
   onImageUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onAnalyze: () => void;
@@ -120,7 +124,7 @@ export function ImageUploader({
           <Button
             onClick={onAnalyze}
             disabled={!uploadedImage || isAnalyzing}
-            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-medium py-2 md:py-3 text-sm md:text-base"
+            className="w-full bg-purple-700 text-white hover:bg-purple-800 font-medium py-2 md:py-3 text-sm md:text-base cursor-pointer"
           >
             {isAnalyzing ? "Analyzing..." : "Analyze Image"}
           </Button>

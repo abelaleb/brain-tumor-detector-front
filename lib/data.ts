@@ -1,6 +1,7 @@
 // lib/data.ts
 
 import { Brain, Activity, Zap, Target } from "lucide-react";
+import { types } from "util";
 
 export type ModelType = "brain-tumor" | "stroke" | "parkinson" | "hemorrhagic";
 
@@ -16,6 +17,7 @@ export const models = {
     subtitle: "Neurological",
     icon: Brain,
     classes: ["Glioma", "Meningioma", "Pituitary Tumor", "No Tumor"],
+    types: ["Glioma", "Meningioma", "Pituitary Tumor"],
     description:
       "Advanced AI model for detecting and classifying brain tumors from MRI scans",
     color: "from-pink-500 to-purple-600",
@@ -26,6 +28,7 @@ export const models = {
     subtitle: "Vascular",
     icon: Activity,
     classes: ["Bleeding", "Ischemia", "Normal"],
+    types : ["Bleeding", "Ischemia"],
     description: "Rapid stroke classification for emergency diagnosis",
     color: "from-cyan-500 to-blue-600",
     bgColor: "bg-cyan-500",
@@ -35,6 +38,7 @@ export const models = {
     subtitle: "Movement Disorders",
     icon: Zap,
     classes: ["Parkinson's", "Normal"],
+    types: ["Parkinson's"],
     description: "Early detection of Parkinson's disease markers",
     color: "from-amber-500 to-orange-600",
     bgColor: "bg-amber-500",
@@ -44,6 +48,7 @@ export const models = {
     subtitle: "Emergency",
     icon: Target,
     classes: ["Hemorrhagic", "Normal"],
+    types: ["Hemorrhagic"],
     description: "Detection of hemorrhagic conditions",
     color: "from-red-500 to-pink-600",
     bgColor: "bg-red-500",

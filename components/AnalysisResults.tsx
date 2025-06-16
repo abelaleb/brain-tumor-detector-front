@@ -20,7 +20,6 @@ interface AnalysisResultsProps {
   feedback: "correct" | "incorrect" | null;
   onFeedback: (isCorrect: boolean) => void;
   onSendForTraining: () => void;
-  model: (typeof models)[ModelType];
 }
 
 export function AnalysisResults({
@@ -29,7 +28,6 @@ export function AnalysisResults({
   feedback,
   onFeedback,
   onSendForTraining,
-  model,
 }: AnalysisResultsProps) {
   return (
     <Card className="bg-white/5 backdrop-blur-sm border-white/10">
@@ -86,14 +84,14 @@ export function AnalysisResults({
                 <Button
                   variant={feedback === "correct" ? "default" : "outline"}
                   onClick={() => onFeedback(true)}
-                  className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2"
+                  className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2 cursor-pointer"
                 >
                   <CheckCircle className="w-3 h-3 md:w-4 md:h-4" /> Correct
                 </Button>
                 <Button
                   variant={feedback === "incorrect" ? "destructive" : "outline"}
                   onClick={() => onFeedback(false)}
-                  className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2"
+                  className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2 cursor-pointer"
                 >
                   <XCircle className="w-3 h-3 md:w-4 md:h-4" /> Incorrect
                 </Button>
@@ -104,7 +102,7 @@ export function AnalysisResults({
                   <Button
                     onClick={onSendForTraining}
                     variant="secondary"
-                    className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2"
+                    className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2 cursor-pointer"
                   >
                     <Send className="w-3 h-3 md:w-4 md:h-4" /> Send for Training
                   </Button>
@@ -126,65 +124,7 @@ export function AnalysisResults({
               <p className="text-xs md:text-sm opacity-70">
                 AI analysis will appear here
               </p>
-            </div>
-            <Card className="bg-black/40 backdrop-blur-xl border-white/10">
-              <CardHeader>
-                <CardTitle className="text-white">Getting Started</CardTitle>
-                <CardDescription className="text-gray-400">
-                  Follow these steps to analyze your medical images
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <div
-                      className={`w-8 h-8 bg-gradient-to-r ${model.color} text-white rounded-full flex items-center justify-center text-sm font-bold`}
-                    >
-                      1
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white">
-                        Select AI Model
-                      </h4>
-                      <p className="text-sm text-gray-400">
-                        Choose the appropriate model using the tabs above
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div
-                      className={`w-8 h-8 bg-gradient-to-r ${model.color} text-white rounded-full flex items-center justify-center text-sm font-bold`}
-                    >
-                      2
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white">
-                        Upload Medical Image
-                      </h4>
-                      <p className="text-sm text-gray-400">
-                        Upload a clear medical scan (MRI scan.)
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div
-                      className={`w-8 h-8 bg-gradient-to-r ${model.color} text-white rounded-full flex items-center justify-center text-sm font-bold`}
-                    >
-                      3
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white">
-                        Get AI Analysis
-                      </h4>
-                      <p className="text-sm text-gray-400">
-                        Receive detailed analysis with confidence scores and
-                        disease information
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            </div>           
           </>
         )}
       </CardContent>

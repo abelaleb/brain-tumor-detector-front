@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ModelType, models, diseaseInfo } from "@/lib/data";
 
 interface DiseaseInfoProps {
-  model: typeof models[ModelType];
+  model: (typeof models)[ModelType];
   diseaseInfo: typeof diseaseInfo;
 }
 
@@ -28,13 +28,13 @@ export function DiseaseInfo({ model, diseaseInfo }: DiseaseInfoProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue={model.classes[0]} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-4 md:mb-6 bg-white/10">
-            {model.classes.map((condition) => (
+        <Tabs defaultValue={model.types[0]} className="w-full">
+          <TabsList className="w-full flex justify-around mb-4 md:mb-6 bg-white/10">
+            {model.types.map((condition) => (
               <TabsTrigger
                 key={condition}
                 value={condition}
-                className="text-xs md:text-sm data-[state=active]:bg-white/20 data-[state=active]:text-white text-gray-300"
+                className="text-xs md:text-sm data-[state=active]:bg-white/20 data-[state=active]:text-white text-gray-300 cursor-pointer "
               >
                 {condition}
               </TabsTrigger>
@@ -55,21 +55,30 @@ export function DiseaseInfo({ model, diseaseInfo }: DiseaseInfoProps) {
                   {/* Description Card */}
                   <Card className="bg-white/5 border-white/10">
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-white text-base md:text-lg">Description</CardTitle>
+                      <CardTitle className="text-white text-base md:text-lg">
+                        Description
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">{info.description}</p>
+                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                        {info.description}
+                      </p>
                     </CardContent>
                   </Card>
                   {/* Symptoms Card */}
                   <Card className="bg-white/5 border-white/10">
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-white text-base md:text-lg">Symptoms</CardTitle>
+                      <CardTitle className="text-white text-base md:text-lg">
+                        Symptoms
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="text-gray-300 space-y-2">
                         {info.symptoms.map((symptom, index) => (
-                          <li key={index} className="flex items-center gap-2 text-sm md:text-base">
+                          <li
+                            key={index}
+                            className="flex items-center gap-2 text-sm md:text-base"
+                          >
                             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
                             {symptom}
                           </li>
@@ -80,10 +89,14 @@ export function DiseaseInfo({ model, diseaseInfo }: DiseaseInfoProps) {
                   {/* Treatment Card */}
                   <Card className="bg-white/5 border-white/10">
                     <CardHeader className="pb-3">
-                       <CardTitle className="text-white text-base md:text-lg">Treatment</CardTitle>
+                      <CardTitle className="text-white text-base md:text-lg">
+                        Treatment
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">{info.treatment}</p>
+                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                        {info.treatment}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>
@@ -95,3 +108,4 @@ export function DiseaseInfo({ model, diseaseInfo }: DiseaseInfoProps) {
     </Card>
   );
 }
+
