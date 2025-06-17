@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { AnalysisResult, ModelType, models } from "@/lib/data";
+import CommentForm from "./CommentForm";
 
 interface AnalysisResultsProps {
   isAnalyzing: boolean;
@@ -97,17 +98,25 @@ export function AnalysisResults({
                 </Button>
               </div>
 
-              {feedback && (
-                <div className="text-center">
-                  <Button
-                    onClick={onSendForTraining}
-                    variant="secondary"
+               {feedback && feedback=="incorrect" &&  (
+                <div className="text-center text-white">
+                  <div
                     className="flex items-center gap-2 text-xs md:text-sm px-3 md:px-4 py-2 cursor-pointer"
                   >
                     <Send className="w-3 h-3 md:w-4 md:h-4" /> Send for Training
-                  </Button>
+                  </div>
+                  <CommentForm/>
                 </div>
               )}
+              {
+                feedback && feedback === "correct" && (
+                  <div className="text-center text-green-500">
+                    <p className="text-sm md:text-base">
+                      Thank you for your feedback!
+                    </p>
+                  </div>
+                )
+              }
             </div>
           </div>
         )}
