@@ -1,7 +1,7 @@
 // lib/data.ts
 
 import { Brain, Activity, Zap, Target } from "lucide-react";
-import { types } from "util";
+// import { types } from "util";
 
 export type ModelType = "brain-tumor" | "stroke" | "parkinson" | "hemorrhagic";
 
